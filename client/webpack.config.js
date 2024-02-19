@@ -4,7 +4,9 @@ const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 // Done: Add and configure workbox plugins for a service worker and manifest file.
+const WorkboxPlugin = require('workbox-webpack-plugin');
 // Done: Add CSS loaders and babel to webpack.
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = () => {
   return {
@@ -19,15 +21,15 @@ module.exports = () => {
     },
     // done whole plugins
     plugins: [
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js'
-      }),
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Just Another Text Editor'
       }),
-
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js'
+      }),
+     
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
         short_name: 'JATE',
@@ -42,16 +44,15 @@ module.exports = () => {
           src: path.resolve('./src/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
-        }
-      })
-      
+        },
+      }),     
     ],
     // done whole module 
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: [ 'style-loader', 'css-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
