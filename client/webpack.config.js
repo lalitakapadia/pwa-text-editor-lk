@@ -13,7 +13,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
+      header: './src/js/header.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -23,7 +26,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Just Another Text Editor'
+        title: 'JATE'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
@@ -32,19 +35,19 @@ module.exports = () => {
      
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'PWA Text Editor',
+        short_name: 'J.A.T.E.',
+        description: 'Create notes with or without an internet connection!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
         fingerprints: false,
         inject: true,
-        icons: {
+        icons: [{
           src: path.resolve('./src/images/logo.png'),
           sizes: [96, 128, 192, 256, 384, 512],
           destination: path.join('assets', 'icons'),
-        },
+        }],
       }),     
     ],
     // done whole module 
@@ -53,10 +56,6 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: [ 'style-loader', 'css-loader'],
-        },
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
