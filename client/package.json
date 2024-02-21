@@ -1,5 +1,5 @@
 {
-  "name": "JATE",
+  "name": "pwa-text-editor-lk",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server",
