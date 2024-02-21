@@ -10,3 +10,8 @@ This program is a text editor that can be run in-browser, or be installed to the
 This text editor require a number of methods and store data to an IndexedDB database to be builded up.
 
 This program has has dependencies, and requires their installation via npm. This project has both a server and a client component, with the client component requiring a build. This can all be invoked via Node at the command prompt using npm start
+
+
+Link for the deployed on Render
+
+https://pwa-text-editor-lk-7nx4.onrender.com
